@@ -1,9 +1,11 @@
+import "./index.css";
+
 const TodoMaker = (props) => {
   const { e } = props;
-  console.log(e);
-  console.log(e.completion);
+  //   console.log(e);
+  //   console.log(e.completion);
   const { date_added, status, todo } = e;
-  console.log(date_added, status, todo);
+  //   console.log(date_added, status, todo);
   return (
     <tr>
       <td>{todo}</td>
