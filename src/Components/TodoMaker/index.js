@@ -1,17 +1,43 @@
-import "./index.css";
-
+import { useState } from "react";
+import { TodoPara, StatusPara, DateAddPara, Div } from "../styledComponents";
 const TodoMaker = (props) => {
   const { e } = props;
-  //   console.log(e);
-  //   console.log(e.completion);
   const { date_added, status, todo } = e;
-  //   console.log(date_added, status, todo);
+
+  const [first, setfirst] = useState(status);
+
+  const changeStatus = async (event) => {
+    await setfirst(event.target.value);
+    const { e } = props;
+    const data = { pk: e.pk, toUpdate: event.target.value };
+
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const response = await fetch("http://localhost:3001/update", options);
+
+    console.log(response);
+    // const data1 = await response.data();
+    // console.log(data1);
+
+    console.log("from change status", first);
+  };
+
   return (
-    <tr>
-      <td>{todo}</td>
-      <td>{status}</td>
-      <td>{date_added}</td>
-    </tr>
+    <Div>
+      <TodoPara>{todo}</TodoPara>
+      {/* <StatusPara>{status}</StatusPara> */}
+      <select value={first} onChange={changeStatus}>
+        <option value="completed">Completed</option>
+        <option value="progress">Progress</option>
+      </select>
+      <DateAddPara>{date_added}</DateAddPara>
+    </Div>
   );
 };
 

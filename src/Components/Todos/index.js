@@ -1,3 +1,10 @@
+import {
+  MainDiv,
+  TodoParaHeading,
+  StatusParaHeading,
+  DateAddParaHeading,
+} from "../styledComponents";
+
 import { useEffect, useState } from "react";
 import TodoMaker from "../TodoMaker";
 import "./index.css";
@@ -23,18 +30,17 @@ const Todos = () => {
       {allTodos === [] ? (
         <p>Loading</p>
       ) : (
-        <table>
-          <thead>
-            <td>Todo</td>
-            <td>status</td>
-            <td>added on</td>
-          </thead>
-          <tbody>
-            {allTodos.map((e) => (
-              <TodoMaker key={e.pk} e={e} />
-            ))}
-          </tbody>
-        </table>
+        <MainDiv>
+          <div className="todoHeader">
+            <TodoParaHeading>todo</TodoParaHeading>
+            <StatusParaHeading>status</StatusParaHeading>
+            <DateAddParaHeading>date_added</DateAddParaHeading>
+          </div>
+
+          {allTodos.map((e) => (
+            <TodoMaker key={e.pk} e={e} />
+          ))}
+        </MainDiv>
       )}
     </div>
   );

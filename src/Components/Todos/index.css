@@ -1,3 +1,6 @@
 thead {
   text-decoration: bold;
 }
+.todoHeader {
+  display: flex;
+}
