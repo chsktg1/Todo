@@ -20,11 +20,9 @@ const TodoMaker = (props) => {
       body: JSON.stringify(data),
     };
     const response = await fetch("http://localhost:3001/update", options);
-
+    const { reloadAllTodos } = props;
+    reloadAllTodos();
     console.log(response);
-    // const data1 = await response.data();
-    // console.log(data1);
-
     console.log("from change status", first);
   };
 
