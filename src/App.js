@@ -8,9 +8,9 @@ import Todos from "./Components/Todos";
 function App() {
   return (
     <>
-      <h1>Add a Todo</h1>
+      <h1 style={{ textAlign: "center" }}>Add a Todo</h1>
       {/* <NewTodo /> */}
-      <h2>Todos in Progress</h2>
+
       <Todos />
       {/* <p>Completed Todos</p> */}
       {/* <CompletedTodos /> */}

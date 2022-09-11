@@ -4,30 +4,38 @@ export const TodoPara = styled.p`
   padding: 8px;
   box-sizing: border-box;
   width: 380px;
-  background-color: #00ff00;
-  color: #0070c1;
+  background-color: #8aaae5;
+  color: white;
+  margin-right: 5px;
+  margin-left: 5px;
 `;
 
 export const TodoParaHeading = styled(TodoPara)`
   border: 2px solid black;
+  font-weight: bold;
+  color: white;
 `;
 
 export const StatusPara = styled(TodoPara)`
-  color: #660000;
   width: 140px;
   border-radius: 10px;
 `;
 
 export const StatusParaHeading = styled(StatusPara)`
   border: 2px solid black;
+  color: white;
+  font-weight: bold;
 `;
 
 export const DateAddPara = styled(TodoPara)`
-  color: #664466;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const DateAddParaHeading = styled(DateAddPara)`
+  color: white;
   border: 2px solid black;
+  font-weight: bold;
 `;
 
 export const Div = styled.div`

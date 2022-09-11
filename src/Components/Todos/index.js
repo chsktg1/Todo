@@ -49,7 +49,7 @@ const Todos = () => {
     const postData = {
       todo: first.todoText,
       status: first.status,
-      date_added: new Date(),
+      date_added: new Date().toUTCString(),
     };
     const options = {
       method: "POST",
@@ -68,27 +68,41 @@ const Todos = () => {
 
   return (
     <div>
-      <label>
-        <input
-          type="text"
-          value={first.todoText}
-          onChange={(e) => {
-            setfirst({ ...first, todoText: e.target.value });
-          }}
-        />
-      </label>
-      <select
-        value={first.status}
-        onChange={(e) => {
-          setfirst({ ...first, status: e.target.value });
-        }}
-      >
-        <option value="progress">In Progress</option>
-        <option value="completed">Completed</option>
-      </select>
-      <button onClick={addData}>Add</button>
+      <div className="formAddTodo">
+        <label>
+          Todo:
+          <input
+            type="text"
+            value={first.todoText}
+            onChange={(e) => {
+              setfirst({ ...first, todoText: e.target.value });
+            }}
+          />
+        </label>
+        <br />
+        <label>
+          Select Status:
+          <select
+            className="custom-select"
+            value={first.status}
+            onChange={(e) => {
+              setfirst({ ...first, status: e.target.value });
+            }}
+          >
+            <option value="progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+        </label>
+        <br />
+        <div>
+          <button type="button" className="btn btn-primary" onClick={addData}>
+            Add Todo
+          </button>
+        </div>
+      </div>
 
       {/* <h1>All Todos</h1> */}
+      <h2 style={{ textAlign: "center" }}>Todos in Progress</h2>
 
       {status === "loading" ? (
         <p>Loading</p>
@@ -97,15 +111,15 @@ const Todos = () => {
       ) : (
         <MainDiv>
           <div className="todoHeader">
-            <TodoParaHeading>todo</TodoParaHeading>
-            <StatusParaHeading>status</StatusParaHeading>
-            <DateAddParaHeading>date_added</DateAddParaHeading>
+            <TodoParaHeading>Todo</TodoParaHeading>
+            <StatusParaHeading>Status</StatusParaHeading>
+            <DateAddParaHeading>Date_added</DateAddParaHeading>
           </div>
 
           {allTodos.map((e) => (
             <TodoMaker key={e.pk} e={e} reloadAllTodos={reloadAllTodos} />
           ))}
-          <p>Completed Todos</p>
+          <p style={{ fontWeight: "bold" }}>Completed Todos</p>
           <div>
             {compTodo.map((e) => (
               <TodoMaker e={e} key={e.pk} reloadAllTodos={reloadAllTodos} />
