@@ -25,6 +25,7 @@ export const StatusParaHeading = styled(StatusPara)`
   border: 2px solid black;
   color: white;
   font-weight: bold;
+  width: 200px;
 `;
 
 export const DateAddPara = styled(TodoPara)`

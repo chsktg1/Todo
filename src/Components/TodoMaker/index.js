@@ -30,7 +30,7 @@ const TodoMaker = (props) => {
   };
 
   const openEditor = async () => {
-    const editedTodo = prompt("Your Todo" + todo, "edit your todo");
+    const editedTodo = prompt("Your Todo :" + todo, "edit your todo");
     console.log(editedTodo);
 
     if (editedTodo != null) {

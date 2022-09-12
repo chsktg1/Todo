@@ -5,15 +5,16 @@ import {
   DateAddParaHeading,
 } from "../styledComponents";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import TodoMaker from "../TodoMaker";
 import "./index.css";
 
 const Todos = () => {
   const [status, updateStatus] = useState("loading");
   const [allTodos, updateTodos] = useState([]);
-
+  const orderElement = useRef(0);
   const [compTodo, setCompTodo] = useState([]);
+  const [order, setOrder] = useState("asc");
   useEffect(() => {
     getCompletedTodoData();
   }, []);
@@ -24,6 +25,25 @@ const Todos = () => {
     const data1 = await response.json();
 
     setCompTodo(data1);
+  };
+
+  const changeOrder = () => {
+    setOrder(orderElement.current.value);
+    const newAllTodos = allTodos.sort((a, b) => {
+      if (
+        new Date(a["date_added"]) < new Date(b["date_added"]) &&
+        orderElement.current.value == "desc"
+      ) {
+        console.log("herere");
+        return 1;
+      } else {
+        console.log("1212");
+        return -1;
+      }
+    });
+    updateTodos(newAllTodos);
+    console.log(newAllTodos);
+    console.log(orderElement.current.value);
   };
 
   const loadData = async () => {
@@ -113,7 +133,19 @@ const Todos = () => {
           <div className="todoHeader">
             <TodoParaHeading>Todo</TodoParaHeading>
             <StatusParaHeading>Status</StatusParaHeading>
-            <DateAddParaHeading>Date_added</DateAddParaHeading>
+            <DateAddParaHeading>
+              Date_added
+              <select
+                value={order}
+                onChange={changeOrder}
+                className="custom-select"
+                style={{ width: "150px" }}
+                ref={orderElement}
+              >
+                <option value="asc">Added First</option>
+                <option value="desc">Added Last</option>
+              </select>
+            </DateAddParaHeading>
           </div>
 
           {allTodos.map((e) => (
