@@ -8,7 +8,8 @@ import {
 import { useEffect, useState, useRef } from "react";
 import TodoMaker from "../TodoMaker";
 import "./index.css";
-
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 const Todos = () => {
   const [status, updateStatus] = useState("loading");
   const [allTodos, updateTodos] = useState([]);
@@ -26,13 +27,13 @@ const Todos = () => {
 
     setCompTodo(data1);
   };
-
+  const navigate = useNavigate();
   const changeOrder = () => {
     setOrder(orderElement.current.value);
     const newAllTodos = allTodos.sort((a, b) => {
       if (
         new Date(a["date_added"]) < new Date(b["date_added"]) &&
-        orderElement.current.value == "desc"
+        orderElement.current.value === "desc"
       ) {
         console.log("herere");
         return 1;
@@ -86,8 +87,17 @@ const Todos = () => {
     reloadAllTodos();
   };
 
+  const logout = () => {
+    Cookies.remove("jwt");
+    navigate("/login");
+  };
+
   return (
     <div>
+      <button className="btn btn-danger" onClick={logout}>
+        Logout
+      </button>
+      <h1 style={{ textAlign: "center" }}>Add a Todo</h1>
       <div className="formAddTodo">
         <label>
           Todo:
