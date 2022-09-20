@@ -21,7 +21,14 @@ const Todos = () => {
   }, []);
 
   const getCompletedTodoData = async () => {
-    const response = await fetch("http://localhost:3001/completed");
+    let option = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("jwt")}`,
+      },
+    };
+
+    const response = await fetch("http://localhost:3001/completed", option);
 
     const data1 = await response.json();
 
@@ -48,7 +55,13 @@ const Todos = () => {
   };
 
   const loadData = async () => {
-    const response = await fetch("http://localhost:3001");
+    let option = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("jwt")}`,
+      },
+    };
+    const response = await fetch("http://localhost:3001", option);
 
     const data = await response.json();
     // console.log(data);
@@ -78,8 +91,10 @@ const Todos = () => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Authorization: `Bearer ${Cookies.get("jwt")}`,
       },
     };
+    console.log(options);
     const response = await fetch("http://localhost:3001/add", options);
     const data = await response.text();
     console.log(data);

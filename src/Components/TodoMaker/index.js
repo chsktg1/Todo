@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TodoPara, StatusPara, DateAddPara, Div } from "../styledComponents";
 import { AiFillDelete } from "react-icons/ai";
-
+import Cookies from "js-cookie";
 import "./index.css";
 const TodoMaker = (props) => {
   const { e } = props;
@@ -21,6 +21,7 @@ const TodoMaker = (props) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Authorization: `Bearer ${Cookies.get("jwt")}`,
       },
     };
     const res = await fetch(url, options);
@@ -41,6 +42,7 @@ const TodoMaker = (props) => {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          Authorization: `Bearer ${Cookies.get("jwt")}`,
         },
       };
 
@@ -61,6 +63,7 @@ const TodoMaker = (props) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Authorization: `Bearer ${Cookies.get("jwt")}`,
       },
       body: JSON.stringify(data),
     };

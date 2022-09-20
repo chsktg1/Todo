@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -62,7 +62,12 @@ const Login = () => {
         type="password"
         className="form-control"
       />
-      <button onClick={checkLogin}>Login</button>
+      <button className="btn btn-primary" onClick={checkLogin}>
+        Login
+      </button>
+      <Link to="/signup">
+        <button className="btn btn-secondary">SignUp</button>
+      </Link>
     </>
   );
 };
