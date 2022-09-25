@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { SignUpDiv, ButtonHolder } from "../styledComponents";
+import "./index.css";
 const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -32,52 +33,57 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <p>Signup</p>
-      <br />
+    <SignUpDiv>
+      <div className="signup-div-holder">
+        <p>Signup</p>
+        <br />
 
-      <label style={{ textAlign: "center" }} htmlFor="name">
-        name
-      </label>
-      <input
-        value={name}
-        onChange={updateName}
-        style={{ width: "200px" }}
-        type="text"
-        className="form-control"
-        id="username"
-      />
+        <label style={{ textAlign: "center" }} htmlFor="name">
+          name
+        </label>
+        <input
+          value={name}
+          onChange={updateName}
+          style={{ width: "200px" }}
+          type="text"
+          className="form-control"
+          id="username"
+        />
 
-      <label style={{ textAlign: "center" }} htmlFor="username">
-        Username
-      </label>
-      <input
-        value={username}
-        onChange={updateUsername}
-        style={{ width: "200px" }}
-        type="text"
-        className="form-control"
-        id="username"
-      />
-      <br />
-      <label style={{ textAlign: "center" }} htmlFor="password">
-        Password
-      </label>
-      <input
-        value={password}
-        onChange={updatePassword}
-        id="password"
-        style={{ width: "200px" }}
-        type="password"
-        className="form-control"
-      />
-      <button className="btn btn-secondary" onClick={checkLogin}>
-        Signup
-      </button>
-      <Link to="/login">
-        <button className="btn btn-primary">Login</button>
-      </Link>
-    </>
+        <label style={{ textAlign: "center" }} htmlFor="username">
+          Username
+        </label>
+        <input
+          value={username}
+          onChange={updateUsername}
+          style={{ width: "200px" }}
+          type="text"
+          className="form-control"
+          id="username"
+        />
+        <br />
+        <label style={{ textAlign: "center" }} htmlFor="password">
+          Password
+        </label>
+        <input
+          value={password}
+          onChange={updatePassword}
+          id="password"
+          style={{ width: "200px" }}
+          type="password"
+          className="form-control"
+        />
+        <br />
+        <ButtonHolder>
+          <button className="btn btn-secondary" onClick={checkLogin}>
+            Signup
+          </button>
+          <Link to="/login">
+            <button className="btn btn-primary">Login</button>
+          </Link>
+        </ButtonHolder>
+      </div>
+    </SignUpDiv>
   );
 };
 

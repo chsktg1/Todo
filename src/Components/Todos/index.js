@@ -4,7 +4,7 @@ import {
   StatusParaHeading,
   DateAddParaHeading,
 } from "../styledComponents";
-
+import Header from "../Header";
 import { useEffect, useState, useRef } from "react";
 import TodoMaker from "../TodoMaker";
 import "./index.css";
@@ -109,9 +109,8 @@ const Todos = () => {
 
   return (
     <div>
-      <button className="btn btn-danger" onClick={logout}>
-        Logout
-      </button>
+      <Header />
+      <hr />
       <h1 style={{ textAlign: "center" }}>Add a Todo</h1>
       <div className="formAddTodo">
         <label>

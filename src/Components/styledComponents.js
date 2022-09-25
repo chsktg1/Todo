@@ -1,3 +1,4 @@
+import LoginBG from "../assets/bg-01.jpg";
 import styled from "styled-components";
 export const TodoPara = styled.p`
   text-align: center;
@@ -50,4 +51,29 @@ export const MainDiv = styled.div`
   justify-content: center;
   align-items: center;
   width: 100vw;
+`;
+export const LoginDiv = styled.div`
+  background-image: url(${LoginBG});
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const SignUpDiv = styled(LoginDiv)`
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
+  height: 100vh;
+`;
+
+export const ButtonHolder = styled.div`
+  display: flex;
+  justify-content: space-around;
 `;

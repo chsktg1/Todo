@@ -1,6 +1,8 @@
+import { LoginDiv, ButtonHolder } from "../styledComponents";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate, Link } from "react-router-dom";
+import "./index.css";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -36,39 +38,44 @@ const Login = () => {
   };
 
   return (
-    <>
-      <p>Login</p>
-      <br />
-      <label style={{ textAlign: "center" }} htmlFor="username">
-        Username
-      </label>
-      <input
-        value={username}
-        onChange={updateUsername}
-        style={{ width: "200px" }}
-        type="text"
-        className="form-control"
-        id="username"
-      />
-      <br />
-      <label style={{ textAlign: "center" }} htmlFor="password">
-        Password
-      </label>
-      <input
-        value={password}
-        onChange={updatePassword}
-        id="password"
-        style={{ width: "200px" }}
-        type="password"
-        className="form-control"
-      />
-      <button className="btn btn-primary" onClick={checkLogin}>
-        Login
-      </button>
-      <Link to="/signup">
-        <button className="btn btn-secondary">SignUp</button>
-      </Link>
-    </>
+    <LoginDiv>
+      <div className="div-box">
+        <h1 style={{ textAlign: "center" }}>Login</h1>
+        <br />
+        <label style={{ textAlign: "center" }} htmlFor="username">
+          Username
+        </label>
+        <input
+          value={username}
+          onChange={updateUsername}
+          style={{ width: "200px" }}
+          type="text"
+          className="form-control"
+          id="username"
+        />
+        <br />
+        <label style={{ textAlign: "center" }} htmlFor="password">
+          Password
+        </label>
+        <input
+          value={password}
+          onChange={updatePassword}
+          id="password"
+          style={{ width: "200px" }}
+          type="password"
+          className="form-control"
+        />
+        <br />
+        <ButtonHolder>
+          <button className="btn btn-primary" onClick={checkLogin}>
+            Login
+          </button>
+          <Link to="/signup">
+            <button className="btn btn-secondary">SignUp</button>
+          </Link>
+        </ButtonHolder>
+      </div>
+    </LoginDiv>
   );
 };
 
